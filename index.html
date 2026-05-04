@@ -1,0 +1,2322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charles Hailey — Creative Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  /* ─── RESET & VARIABLES ──────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --off-black: #111;
+    --grey-900: #1a1a1a;
+    --grey-700: #2e2e2e;
+    --grey-500: #666;
+    --grey-300: #aaa;
+    --grey-100: #e8e8e8;
+    --white: #fafafa;
+    --accent: #c8f0d4;   /* icy mint — editorial, not loud */
+    --accent-2: #a8d4f5; /* cool periwinkle blue for depth */
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --nav-h: 72px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--black); }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ─── NAV ───────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: transparent;
+    transition: background 0.4s var(--ease), backdrop-filter 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-logo {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey-300);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* ─── HERO ───────────────────────────────────────── */
+  #hero {
+    position: relative;
+    height: auto;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 140px 40px 64px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--black);
+    background-size: cover;
+    background-position: center 30%;
+  }
+
+  @keyframes heroZoom {
+    to { transform: scale(1); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      170deg,
+      rgba(10,10,10,0.18) 0%,
+      rgba(10,10,10,0.72) 65%,
+      rgba(10,10,10,0.94) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 900px;
+    animation: fadeUp 1.2s 0.3s var(--ease) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 13vw, 180px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--grey-300);
+  }
+
+  .hero-title {
+    font-family: var(--font-body);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 300;
+    color: var(--grey-300);
+    max-width: 480px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  .hero-view-work {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 1.4s 0.8s var(--ease) both;
+  }
+
+  .hero-scroll-hint::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: var(--grey-700);
+    animation: lineGrow 1.4s 1.2s var(--ease) both;
+    transform-origin: top;
+  }
+
+  @keyframes lineGrow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+  }
+
+  /* ─── SECTION SHARED ────────────────────────────── */
+  section { padding: 120px 40px; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--grey-700);
+  }
+
+  .section-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .section-count {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--grey-500);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── PROJECT GRID ──────────────────────────────── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2px;
+  }
+
+  /* BRAND WORK layout: 3 equal columns */
+  .brand-grid .card:nth-child(1) { grid-column: 1 / 5; }
+  .brand-grid .card:nth-child(2) { grid-column: 5 / 9; }
+  .brand-grid .card:nth-child(3) { grid-column: 9 / 13; }
+
+  /* PERSONAL layout: two equal */
+  .personal-grid .card:nth-child(1) { grid-column: 1 / 7; }
+  .personal-grid .card:nth-child(2) { grid-column: 7 / 13; }
+
+  /* ─── CARD ──────────────────────────────────────── */
+  .card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--grey-900);
+  }
+
+  /* Tall card */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 120%; /* default tall */
+  }
+
+  .brand-grid .card:nth-child(1) .card-inner { padding-bottom: 130%; }
+  .brand-grid .card:nth-child(2) .card-inner { padding-bottom: 130%; }
+  .brand-grid .card:nth-child(3) .card-inner { padding-bottom: 130%; }
+
+  .personal-grid .card-inner { padding-bottom: 80%; }
+  .freelance-grid .card-inner { padding-bottom: 65%; }
+
+  .card-img {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.8s var(--ease);
+  }
+
+  .card:hover .card-img { transform: scale(1.06); }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10,10,10,0.90) 0%,
+      rgba(10,10,10,0.20) 50%,
+      transparent 100%
+    );
+    opacity: 0.7;
+    transition: opacity 0.4s;
+  }
+
+  .card:hover .card-overlay { opacity: 1; }
+
+  .card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px;
+    transform: translateY(8px);
+    transition: transform 0.4s var(--ease);
+  }
+
+  .card:hover .card-info { transform: translateY(0); }
+
+  .card-client {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-300);
+    line-height: 1.5;
+    max-width: 300px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s 0.05s var(--ease), transform 0.35s 0.05s var(--ease);
+  }
+
+  .card:hover .card-desc { opacity: 1; transform: translateY(0); }
+
+  .card-arrow {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8) rotate(-45deg);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+
+  .card:hover .card-arrow {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .card-arrow svg { width: 14px; height: 14px; color: var(--white); }
+
+  /* ─── BRAND WORK ────────────────────────────────── */
+  #brand-work { background: var(--black); }
+
+  /* ─── PERSONAL WORK ─────────────────────────────── */
+  #personal-work {
+    background: var(--off-black);
+    position: relative;
+  }
+
+  #personal-work::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 40px; right: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--grey-700), transparent);
+  }
+
+  .personal-grid .card { border: 1px solid var(--grey-700); }
+
+  .personal-grid .card-client { color: var(--accent-2); }
+
+  /* ─── FREELANCE ─────────────────────────────────── */
+  #freelance {
+    background: var(--black);
+    padding-bottom: 0;
+  }
+
+  .freelance-grid { gap: 0; }
+
+  .freelance-grid .card { grid-column: 1 / -1; }
+
+  .freelance-editorial {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .freelance-editorial .card-inner { padding-bottom: 52%; }
+
+  .freelance-editorial .card-info {
+    padding: 48px 64px;
+    max-width: 640px;
+  }
+
+  .freelance-editorial .card-client {
+    font-size: 11px;
+    color: var(--white);
+    opacity: 0.5;
+  }
+
+  .freelance-editorial .card-title {
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .freelance-editorial .card-desc {
+    font-size: 15px;
+    max-width: 440px;
+  }
+
+  .freelance-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* ─── ABOUT ─────────────────────────────────────── */
+  #about {
+    background: var(--white);
+    color: var(--black);
+    padding: 120px 40px;
+  }
+
+  #about .section-label { color: var(--grey-500); }
+  #about .section-title { color: var(--black); }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 64px;
+  }
+
+  .about-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--grey-100);
+  }
+
+  .about-photo img { transition: transform 0.8s var(--ease); }
+  .about-photo:hover img { transform: scale(1.04); }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .about-intro {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.8vw, 36px);
+    line-height: 1.25;
+    color: var(--black);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .about-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--grey-100);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 44px;
+    line-height: 1;
+    color: var(--black);
+  }
+
+  .stat-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-top: 6px;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 36px;
+  }
+
+  .tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .tag:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+  /* ─── CONTACT ───────────────────────────────────── */
+  #contact {
+    background: var(--black);
+    padding: 140px 40px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(100px, 18vw, 240px);
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .contact-content { position: relative; }
+
+  .contact-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 24px;
+  }
+
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 7vw, 96px);
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 48px;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--grey-500); }
+
+  .contact-email {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--grey-700);
+    padding-bottom: 4px;
+    transition: border-color 0.25s, color 0.25s;
+    margin-bottom: 60px;
+  }
+
+  .contact-email:hover { border-color: var(--accent); color: var(--accent); }
+
+  .contact-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .contact-socials a {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .contact-socials a:hover { color: var(--white); }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--grey-900);
+  }
+
+  .footer-copy {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--grey-500);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-back {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .footer-back:hover { color: var(--white); }
+
+  /* ─── REVEAL ANIMATION ──────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── MOBILE ─────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { gap: 24px; }
+    section { padding: 80px 24px; }
+    #hero { padding: 0 24px 64px; }
+
+    /* All 3 brand cards stack full width on tablet */
+    .brand-grid .card:nth-child(1) { grid-column: 1 / -1; }
+    .brand-grid .card:nth-child(2) { grid-column: 1 / 7; }
+    .brand-grid .card:nth-child(3) { grid-column: 7 / 13; }
+
+    .brand-grid .card:nth-child(1) .card-inner { padding-bottom: 75%; }
+    .brand-grid .card:nth-child(2) .card-inner { padding-bottom: 110%; }
+    .brand-grid .card:nth-child(3) .card-inner { padding-bottom: 110%; }
+
+    .personal-grid .card:nth-child(1),
+    .personal-grid .card:nth-child(2) { grid-column: 1 / -1; }
+
+    .about-layout { grid-template-columns: 1fr; gap: 40px; }
+
+    .freelance-editorial .card-info { padding: 32px 28px; }
+    .freelance-editorial .card-title { font-size: 42px; }
+
+    .about-stats { gap: 32px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 64px 20px; }
+    #hero { padding: 0 20px 56px; }
+
+    /* All 3 brand cards full width on mobile */
+    .brand-grid .card:nth-child(1),
+    .brand-grid .card:nth-child(2),
+    .brand-grid .card:nth-child(3) { grid-column: 1 / -1; }
+    .brand-grid .card:nth-child(1) .card-inner,
+    .brand-grid .card:nth-child(2) .card-inner,
+    .brand-grid .card:nth-child(3) .card-inner { padding-bottom: 90%; }
+
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    .about-stats { flex-wrap: wrap; }
+    .freelance-editorial .card-inner { padding-bottom: 100%; }
+  }
+
+  /* ─── CURSOR DOT ─────────────────────────────────── */
+  .cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
+    mix-blend-mode: difference;
+  }
+
+  .cursor.expanded {
+    width: 48px;
+    height: 48px;
+  }
+
+  @media (pointer: coarse) { .cursor { display: none; } }
+
+  /* ─── FANATICS CASE STUDY MODAL ─────────────────── */
+  .cs-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--black);
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s var(--ease);
+  }
+
+  .cs-modal.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .cs-close {
+    position: fixed;
+    top: 28px;
+    right: 36px;
+    z-index: 210;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey-300);
+    background: none;
+    border: 1px solid var(--grey-700);
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s 0.3s var(--ease), transform 0.4s 0.3s var(--ease), color 0.2s, border-color 0.2s;
+  }
+
+  .cs-modal.open .cs-close {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .cs-close:hover { color: var(--white); border-color: var(--white); }
+
+  /* Hero cover */
+  .cs-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .cs-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.06);
+    transition: transform 1.2s var(--ease);
+  }
+
+  .cs-modal.open .cs-hero-bg { transform: scale(1); }
+
+  .cs-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(170deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.85) 100%);
+  }
+
+  .cs-hero-content {
+    position: absolute;
+    bottom: 56px;
+    left: 56px;
+    right: 56px;
+  }
+
+  .cs-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .cs-title {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 6vw, 88px);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .cs-subtitle {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--grey-300);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* Body */
+  .cs-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 56px 120px;
+  }
+
+  /* Brief strip */
+  .cs-brief {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--grey-700);
+    border: 1px solid var(--grey-700);
+    margin-bottom: 80px;
+  }
+
+  .cs-brief-cell {
+    background: var(--off-black);
+    padding: 28px 24px;
+  }
+
+  .cs-brief-label {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 8px;
+  }
+
+  .cs-brief-val {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  /* Section label */
+  .cs-section-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--grey-700);
+  }
+
+  .cs-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 42px);
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .cs-section-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--grey-300);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  /* Deliverables grid */
+  .cs-deliverables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+
+  .cs-deliverable {
+    background: var(--grey-900);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-deliverable::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .cs-del-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .cs-del-type {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .cs-del-title {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cs-del-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey-500);
+    line-height: 1.6;
+  }
+
+  /* Asset: Video */
+  .cs-video-block {
+    margin-bottom: 80px;
+  }
+
+  .cs-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 24px;
+    max-width: 800px;
+  }
+
+  .cs-video-wrap {
+    position: relative;
+    background: var(--grey-900);
+    overflow: hidden;
+  }
+
+  /* Intrinsic ratio container — prevents player from collapsing on play */
+  .cs-video-wrap .ratio-box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%; /* 9:16 */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .cs-video-wrap .ratio-box iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* Legacy direct iframe (no ratio-box) */
+  .cs-video-wrap > iframe {
+    width: 100%;
+    aspect-ratio: 9/16;
+    border: none;
+    display: block;
+  }
+
+  .cs-video-label {
+    padding: 14px 16px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    border-top: 1px solid var(--grey-700);
+  }
+
+  /* Asset: Carousel / Stills */
+  .cs-stills-block { margin-bottom: 80px; }
+
+  .cs-stills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 24px;
+  }
+
+  .cs-still {
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    background: var(--grey-900);
+    position: relative;
+  }
+
+  .cs-still img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+
+  .cs-still:hover img { transform: scale(1.04); }
+
+  .cs-still-num {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .cs-hero-content { left: 28px; right: 28px; bottom: 36px; }
+    .cs-body { padding: 48px 28px 80px; }
+    .cs-brief { grid-template-columns: 1fr 1fr; }
+    .cs-deliverables { grid-template-columns: 1fr; }
+    .cs-video-grid { grid-template-columns: 1fr; }
+    .cs-stills-grid { grid-template-columns: 1fr 1fr !important; }
+    .cs-close { top: 16px; right: 16px; }
+  }
+
+  @media (max-width: 600px) {
+    .cs-brief { grid-template-columns: 1fr; }
+    .cs-stills-grid { grid-template-columns: 1fr !important; }
+    .cs-still { aspect-ratio: 3/4; }
+  }
+
+  /* ─── DAVE EAST MODAL — dark editorial ──────────── */
+  #daveeast-modal .cs-eyebrow { color: #f5d800; }
+  #daveeast-modal .cs-deliverable::before { background: #f5d800; }
+  #daveeast-modal .cs-del-type { color: #f5d800; }
+
+  .de-hero-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 24px;
+  }
+
+  .de-video-wrap {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .de-video-wrap .ratio-box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .de-video-wrap .ratio-box iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .de-video-wrap > iframe {
+    width: 100%;
+    aspect-ratio: 9/16;
+    border: none;
+    display: block;
+  }
+
+  .de-video-label {
+    padding: 14px 16px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    border-top: 1px solid var(--grey-700);
+  }
+
+  .de-stills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 24px;
+  }
+
+  .de-still {
+    overflow: hidden;
+    background: var(--grey-900);
+    position: relative;
+  }
+
+  .de-still img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+
+  .de-still:hover img { transform: scale(1.04); }
+
+  .de-still-num {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* freelance half cards mobile */
+  @media (max-width: 700px) {
+    #freelance .project-grid { grid-template-columns: 1fr !important; }
+    .de-hero-video-grid { grid-template-columns: 1fr; }
+    .de-stills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FANATICS CASE STUDY MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cs-modal" id="fanatics-modal" role="dialog" aria-modal="true" aria-label="Fanatics / Topps Case Study">
+
+  <button class="cs-close" onclick="closeFanatics()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M1 1l10 10M11 1L1 11"/>
+    </svg>
+    Close
+  </button>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1800&q=80&auto=format&fit=crop');"></div>
+    <div class="cs-hero-overlay"></div>
+    <div class="cs-hero-content">
+      <p class="cs-eyebrow">Fanatics · Topps Digital — 2025</p>
+      <h2 class="cs-title">The Card<br><em>Is Culture.</em></h2>
+      <p class="cs-subtitle">Social-first content tied to sports moments, product drops, and in-app events — across NBA Collect, BUNT, and Star Wars Card Trader.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cs-body">
+
+    <!-- BRIEF STRIP -->
+    <div class="cs-brief">
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Client</div>
+        <div class="cs-brief-val">Fanatics / Topps Digital</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Role</div>
+        <div class="cs-brief-val">Marketing Content Producer</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Apps</div>
+        <div class="cs-brief-val">NBA Collect · BUNT · Star Wars Card Trader</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Output</div>
+        <div class="cs-brief-val">Video · Carousel · Motion Asset</div>
+      </div>
+    </div>
+
+    <!-- THE BRIEF -->
+    <p class="cs-section-label">The Brief</p>
+    <h3 class="cs-section-title">Social at the speed of sport.</h3>
+    <p class="cs-section-body">Topps Digital apps live and die by the moment — pack drops, in-game highlights, limited card reveals. The brief: create social-first content that meets fans where they already are, drives app engagement, and makes digital collecting feel as exciting as pulling a rare from a real pack. Three deliverables. One tight creative window.</p>
+
+    <!-- DELIVERABLES -->
+    <p class="cs-section-label">Deliverables</p>
+    <div class="cs-deliverables">
+      <div class="cs-deliverable">
+        <div class="cs-del-num">01</div>
+        <div class="cs-del-type">Short-Form Video</div>
+        <div class="cs-del-title">Reels-Style Campaign Spot</div>
+        <div class="cs-del-desc">High-energy vertical video built around a sports moment — card reveals, pack rips, collector reaction. Optimized for Instagram Reels and TikTok.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">02</div>
+        <div class="cs-del-type">Instagram Carousel</div>
+        <div class="cs-del-title">Static Product Drop Carousel</div>
+        <div class="cs-del-desc">Swipeable 9:16 frames highlighting a featured pack or card set — "Chase The Rare" campaign driving urgency around NBA Finals drops.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">03</div>
+        <div class="cs-del-type">Motion Asset</div>
+        <div class="cs-del-title">Animated App Promo</div>
+        <div class="cs-del-desc">Kinetic app-store-style vertical asset promoting NBA Collect — pack drop urgency, reward loop visualization, and download CTA.</div>
+      </div>
+    </div>
+
+    <!-- VIDEO ASSETS -->
+    <div class="cs-video-block">
+      <p class="cs-section-label">Asset 01 — Short-Form Video</p>
+      <h3 class="cs-section-title">Reels-Style Campaign Spots</h3>
+      <p class="cs-section-body">Two vertical video spots built for native social performance — designed to stop the scroll and drive app opens during live sports windows.</p>
+      <div class="cs-video-grid">
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/000b3339-10e8-44e1-a6c8-7af7eaae2a98?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">NBA Collect — Pack Drop Spot</div>
+        </div>
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/00ea51da-2024-4a1c-87c7-c3fb4ac498a5?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">BUNT — Sports Moment Spot</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAROUSEL STILLS -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">Asset 02 — Instagram Carousel</p>
+      <h3 class="cs-section-title">Chase The Rare.</h3>
+      <p class="cs-section-body">Swipeable frames designed for the NBA Finals drop window — each slide escalates the stakes from product awareness to collector FOMO to download CTA.</p>
+      <div class="cs-stills-grid">
+        <div class="cs-still">
+          <img src="https://portfolio-images1.b-cdn.net/fanatics-brunson.png" alt="Fan holding Jalen Brunson Topps Chrome card" loading="lazy">
+          <span class="cs-still-num">Frame 01</span>
+        </div>
+        <div class="cs-still">
+          <img src="https://portfolio-images1.b-cdn.net/fanatics-chase-rare.png" alt="Chase The Rare — NBA Collect card reveal" loading="lazy">
+          <span class="cs-still-num">Frame 02</span>
+        </div>
+        <div class="cs-still">
+          <img src="https://portfolio-images1.b-cdn.net/fanatics-pack-drop.png" alt="Pack Drop Available Now — NBA Collect app promo" loading="lazy">
+          <span class="cs-still-num">Frame 03</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASSET 03 -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">Asset 03 — Motion / App Promo</p>
+      <h3 class="cs-section-title">Log in. Rip packs.<br>Build your collection.</h3>
+      <p class="cs-section-body">App-download-optimized vertical asset — reward loop visualization paired with pack drop urgency. Designed for paid social and organic story placement.</p>
+      <div class="cs-stills-grid" style="grid-template-columns: 1fr 2fr;">
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/fanatics-nba-collect.png" alt="NBA Collect app promo — Pack Drop Available Now" loading="lazy">
+          <span class="cs-still-num">Asset 03</span>
+        </div>
+        <div style="padding: 32px 40px; display: flex; flex-direction: column; justify-content: center; background: var(--grey-900);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">Creative Decision</p>
+          <p style="font-family: var(--font-display); font-size: clamp(22px, 2.5vw, 32px); color: var(--white); margin-bottom: 16px; line-height: 1.2;">Make the app feel like the pack.</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">The gold coins, diamonds, and arena backdrop aren't decoration — they're the reward loop made visual. The brief called for an app promo; the creative decision was to make you feel what it's like to be inside the app before you download it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cs-body -->
+</div><!-- /fanatics-modal -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PACIFICO CASE STUDY MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cs-modal" id="pacifico-modal" role="dialog" aria-modal="true" aria-label="Pacifico Case Study">
+
+  <button class="cs-close" onclick="closePacifico()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M1 1l10 10M11 1L1 11"/>
+    </svg>
+    Close
+  </button>
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-bg" style="background-image: url('https://portfolio-images1.b-cdn.net/pacifico-chairlift.png'); background-position: center 25%;"></div>
+    <div class="cs-hero-overlay" style="background: linear-gradient(170deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.88) 100%);"></div>
+    <div class="cs-hero-content">
+      <p class="cs-eyebrow" style="color: #c8f0d4;">Pacifico × Snow League — Official Beer Partner</p>
+      <h2 class="cs-title">Feel The<br><em>Elements.</em></h2>
+      <p class="cs-subtitle">Adventure-first social content, broadcast partnership assets, and lifestyle storytelling — from the mountain to the feed.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cs-body">
+
+    <!-- BRIEF STRIP -->
+    <div class="cs-brief">
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Client</div>
+        <div class="cs-brief-val">Cerveza Pacifico</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Partnership</div>
+        <div class="cs-brief-val">Snow League — Official Beer Partner</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Broadcast</div>
+        <div class="cs-brief-val">Peacock — Live from Yunding Snow Park, China</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Output</div>
+        <div class="cs-brief-val">Social Video · Partnership Assets · Lifestyle Content</div>
+      </div>
+    </div>
+
+    <!-- THE BRIEF -->
+    <p class="cs-section-label">The Brief</p>
+    <h3 class="cs-section-title">Put a Mexican beer on a mountain.</h3>
+    <p class="cs-section-body">Pacifico is a brand built on exploration — "Discover More" isn't just a tagline, it's a worldview. As Official Beer Partner of the Snow League, the brief was to extend that spirit into winter sport culture: social content that lives natively on the mountain, broadcast partnership assets for the Peacock simulcast, and lifestyle visuals that make Pacifico feel as at home at 10,000 feet as it does on a beach.</p>
+
+    <!-- DELIVERABLES -->
+    <p class="cs-section-label">Deliverables</p>
+    <div class="cs-deliverables">
+      <div class="cs-deliverable">
+        <div class="cs-del-num">01</div>
+        <div class="cs-del-type">Social Video</div>
+        <div class="cs-del-title">Vertical Campaign Spots</div>
+        <div class="cs-del-desc">Reels-optimized vertical video tied to Snow League live event windows — adventure POV, athlete moments, brand integration at altitude.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">02</div>
+        <div class="cs-del-type">Broadcast Partnership</div>
+        <div class="cs-del-title">Peacock Event Assets</div>
+        <div class="cs-del-desc">Co-branded creative for the December 4–5 live broadcast from Yunding Snow Park, China — tune-in graphics, social amplification, and Pacifico × Snow League lockup.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">03</div>
+        <div class="cs-del-type">Lifestyle Content</div>
+        <div class="cs-del-title">Adventure-First Stills</div>
+        <div class="cs-del-desc">POV snowboarding, chairlift golden hour, and crew lifestyle shots — social-ready visuals that embed Pacifico in the discovery mindset of the Snow League audience.</div>
+      </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <div class="cs-video-block">
+      <p class="cs-section-label">Asset 01 — Social Video</p>
+      <h3 class="cs-section-title">Built for the scroll, shot for the mountain.</h3>
+      <p class="cs-section-body">Two vertical spots produced for Instagram Reels and TikTok — designed to capture the sensation of being on the mountain, with Pacifico woven in as the reward for the journey up.</p>
+      <div class="cs-video-grid">
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/eb4f15a0-6bfa-448b-97b3-bd637f5defd1?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">Pacifico × Snow League — Feel The Elements</div>
+        </div>
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/905e2ee2-5068-4f74-b15f-4cff265bce40?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">Pacifico × Snow League — The Journey Up</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAROUSEL STILLS -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">Asset 02 + 03 — Campaign Stills</p>
+      <h3 class="cs-section-title">Discover More.</h3>
+      <p class="cs-section-body">Social-ready statics spanning POV adventure, broadcast tune-in, and group lifestyle — four distinct frames covering the full campaign arc from mountain to app.</p>
+      <div class="cs-stills-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/pacifico-snowboard.jpeg" alt="Feel The Elements — Pacifico POV snowboard" loading="lazy">
+          <span class="cs-still-num">Frame 01</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/pacifico-peacock.jpg" alt="Pacifico × Snow League Peacock broadcast" loading="lazy">
+          <span class="cs-still-num">Frame 02</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/pacifico-chairlift.png" alt="The Journey Up — Pacifico × Snow League" loading="lazy">
+          <span class="cs-still-num">Frame 03</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/pacifico-discover.png" alt="Discover Together — Pacifico lifestyle" loading="lazy">
+          <span class="cs-still-num">Frame 04</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATIVE CALLOUT -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">Creative Direction</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        <div style="padding: 40px; background: var(--grey-900);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">The Insight</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"The mountain isn't the destination. It's the proof."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">Snow League audiences aren't casual viewers — they're participants who've earned their peaks. Pacifico's "Discover More" platform fits that ethos perfectly: the beer at the end of the run, not the beginning.</p>
+        </div>
+        <div style="padding: 40px; background: var(--grey-900); border-left: 1px solid var(--grey-700);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">The Approach</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"Shoot it like a skate video, brand it like a beer ad."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">POV angles, natural light, and athlete-first framing — Pacifico never forces its way into the frame. The brand earns its place by being part of the moment, not interrupting it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cs-body -->
+</div><!-- /pacifico-modal -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DAVE EAST CASE STUDY MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cs-modal" id="daveeast-modal" role="dialog" aria-modal="true" aria-label="Dave East Case Study">
+
+  <button class="cs-close" onclick="closeDaveEast()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M1 1l10 10M11 1L1 11"/>
+    </svg>
+    Close
+  </button>
+
+  <!-- HERO — full-bleed 16:9 video -->
+  <div style="position: relative; width: 100%; background: #000; overflow: hidden; padding-top: 72px;">
+    <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000;">
+      <iframe
+        src="https://iframe.mediadelivery.net/embed/623611/e829dcc4-8bd4-4950-81ad-cfc15a6f874b?autoplay=false&loop=false&muted=false&preload=true"
+        style="position: absolute; inset: 0; width: 100%; height: 100%; border: none;"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <!-- title card below video -->
+    <div style="padding: 40px 56px 0; max-width: 1200px; margin: 0 auto;">
+      <p class="cs-eyebrow" style="color: #f5d800;">Freelance — Music / Artist · 2025</p>
+      <h2 class="cs-title">Dave East.</h2>
+      <p class="cs-subtitle">Social content created across various requests — capturing, creating, editing, and managing assets for one of Harlem's most consistent voices.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cs-body" style="padding-top: 56px;">
+
+    <!-- BRIEF STRIP -->
+    <div class="cs-brief">
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Artist</div>
+        <div class="cs-brief-val">Dave East</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Project</div>
+        <div class="cs-brief-val">Ongoing Social Content</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Role</div>
+        <div class="cs-brief-val">Capture · Create · Edit · Manage</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Platforms</div>
+        <div class="cs-brief-val">Instagram · TikTok · YouTube Shorts</div>
+      </div>
+    </div>
+
+    <!-- THE BRIEF -->
+    <p class="cs-section-label">The Work</p>
+    <h3 class="cs-section-title">Content on demand. Culture on point.</h3>
+    <p class="cs-section-body">Dave East moves fast — and the content has to keep up. Across various requests and rollout moments, the job was to show up with the right asset at the right time: social graphics, vertical video cuts, campaign visuals. All of it shot, built, edited, and delivered in-house. No middle man. No lag.</p>
+
+    <!-- DELIVERABLES -->
+    <p class="cs-section-label">Scope of Work</p>
+    <div class="cs-deliverables">
+      <div class="cs-deliverable" style="border-left: 2px solid #f5d800;">
+        <div class="cs-del-num">01</div>
+        <div class="cs-del-type" style="color: #f5d800;">Capture</div>
+        <div class="cs-del-title">On-Set & BTS Content</div>
+        <div class="cs-del-desc">Shot and directed behind-the-scenes and lifestyle content across various sessions — visual coverage built for social-first distribution.</div>
+      </div>
+      <div class="cs-deliverable" style="border-left: 2px solid #f5d800;">
+        <div class="cs-del-num">02</div>
+        <div class="cs-del-type" style="color: #f5d800;">Create + Edit</div>
+        <div class="cs-del-title">Social Graphics & Video Cuts</div>
+        <div class="cs-del-desc">Designed and edited graphics, vertical video assets, and Reels-optimized cuts on request — each piece matched to the aesthetic and moment.</div>
+      </div>
+      <div class="cs-deliverable" style="border-left: 2px solid #f5d800;">
+        <div class="cs-del-num">03</div>
+        <div class="cs-del-type" style="color: #f5d800;">Manage</div>
+        <div class="cs-del-title">Content Scheduling & Publishing</div>
+        <div class="cs-del-desc">Handled scheduling, publishing, and content management across platforms — keeping the feed consistent and the moments from going cold.</div>
+      </div>
+    </div>
+
+    <!-- CAMPAIGN GRAPHICS -->
+    <div style="margin-bottom: 80px;">
+      <p class="cs-section-label">Social Assets — Created for Dave East</p>
+      <h3 class="cs-section-title">Built for the feed.</h3>
+      <p class="cs-section-body">Graphic and video assets created across various requests — designed to match the energy of the moment and perform natively on Instagram and TikTok.</p>
+      <div class="de-stills-grid">
+        <div class="de-still" style="aspect-ratio: 16/9;">
+          <img src="https://portfolio-images1.b-cdn.net/daveeast-cover.png" alt="Dave East social asset" loading="lazy">
+          <span class="de-still-num">Social Asset</span>
+        </div>
+        <div class="de-still" style="aspect-ratio: 16/9;">
+          <img src="https://portfolio-images1.b-cdn.net/daveeast-concert.jpg" alt="Dave East social asset" loading="lazy">
+          <span class="de-still-num">Social Asset</span>
+        </div>
+        <div class="de-still" style="aspect-ratio: 9/16; grid-row: span 1;">
+          <img src="https://portfolio-images1.b-cdn.net/daveeast-vertical.png" alt="Dave East vertical social asset" loading="lazy">
+          <span class="de-still-num">Vertical — IG / TikTok</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATIVE CALLOUT -->
+    <div style="margin-bottom: 80px;">
+      <p class="cs-section-label">Creative Direction</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        <div style="padding: 40px; background: var(--grey-900); border-left: 2px solid #f5d800;">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #f5d800; margin-bottom: 16px;">The Approach</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"Match the artist's energy — then amplify it."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">Every asset is built around Dave East's existing aesthetic — gritty, cinematic, Harlem-rooted. The job isn't to reimagine the brand, it's to execute it sharper and faster than anyone else would.</p>
+        </div>
+        <div style="padding: 40px; background: var(--grey-900); border-left: 1px solid var(--grey-700);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #f5d800; margin-bottom: 16px;">The Execution</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"One producer. Full pipeline. Zero lag."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">Capture on-set, build the asset, cut the video, get it live. The whole pipeline runs through one person — which means no handoffs, no delays, and nothing lost in translation.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cs-body -->
+</div><!-- /daveeast-modal -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- AMERICAN EXPRESS CASE STUDY MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cs-modal" id="amex-modal" role="dialog" aria-modal="true" aria-label="American Express Case Study">
+
+  <button class="cs-close" onclick="closeAmex()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M1 1l10 10M11 1L1 11"/>
+    </svg>
+    Close
+  </button>
+
+  <!-- HERO — VIP Race Weekend image -->
+  <div class="cs-hero" style="height: 75vh;">
+    <div class="cs-hero-bg" style="background-image: url('https://portfolio-images1.b-cdn.net/amex-vip-race.png'); background-position: center 25%;"></div>
+    <div class="cs-hero-overlay" style="background: linear-gradient(170deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.92) 100%);"></div>
+    <div class="cs-hero-content">
+      <p class="cs-eyebrow" style="color: #a8d4f5;">American Express — Live Event Production · 2024</p>
+      <h2 class="cs-title">Business Class.<br><em>No Compromises.</em></h2>
+      <p class="cs-subtitle">On-site capture, edit, and post — live content production at the F1 Las Vegas Grand Prix for American Express cardholders. Every frame shot, cut, and published on-site, same day.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cs-body">
+
+    <!-- BRIEF STRIP -->
+    <div class="cs-brief">
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Client</div>
+        <div class="cs-brief-val">American Express</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Event</div>
+        <div class="cs-brief-val">F1 Las Vegas Grand Prix</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Role</div>
+        <div class="cs-brief-val">Capture · Edit · Post — On-Site</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Results</div>
+        <div class="cs-brief-val">345M+ Impressions · 68.1% Sales Growth</div>
+      </div>
+    </div>
+
+    <!-- THE BRIEF -->
+    <p class="cs-section-label">The Brief</p>
+    <h3 class="cs-section-title">Make cardholders feel like they're on the inside.</h3>
+    <p class="cs-section-body">American Express doesn't just sponsor events — they build experiences that make cardholders feel like the most important people in the room. At the F1 Las Vegas Grand Prix, that meant pit lane access, a private hospitality lounge, exclusive merch drops, and race-side moments money can't buy — unless you've got the card. The job was to capture all of it live, turn it around fast, and publish content that made the feed feel like you were there.</p>
+
+    <!-- DELIVERABLES -->
+    <p class="cs-section-label">Scope of Work</p>
+    <div class="cs-deliverables">
+      <div class="cs-deliverable">
+        <div class="cs-del-num">01</div>
+        <div class="cs-del-type">On-Site Capture</div>
+        <div class="cs-del-title">Live Event Production</div>
+        <div class="cs-del-desc">Shot everything on-site across race weekend — cardholder experiences, pit lane moments, hospitality lounge content, and exclusive merch activations.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">02</div>
+        <div class="cs-del-type">Same-Day Edit</div>
+        <div class="cs-del-title">Fast-Turn Video & Stills</div>
+        <div class="cs-del-desc">Edited video and photo assets in real time — vertical cuts for Reels, social-optimized stills, and branded graphics, all finalized before the checkered flag dropped.</div>
+      </div>
+      <div class="cs-deliverable">
+        <div class="cs-del-num">03</div>
+        <div class="cs-del-type">Publish</div>
+        <div class="cs-del-title">Live Social Posting</div>
+        <div class="cs-del-desc">Published directly from the event — keeping the content timeline in lockstep with the race weekend moment-to-moment, while the story was still live.</div>
+      </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <div class="cs-video-block">
+      <p class="cs-section-label">Video — Live Event Cuts</p>
+      <h3 class="cs-section-title">Shot, cut, and live before the engines cooled.</h3>
+      <p class="cs-section-body">Two vertical video pieces produced on-site at Las Vegas — captured between activations, edited trackside, and published in real time to keep the feed running at race speed.</p>
+      <div class="cs-video-grid">
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/9cf69933-0cf8-4735-80db-0caeec1e60b9?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">AmEx × F1 Las Vegas — Race Weekend</div>
+        </div>
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/44cb4a46-e573-46cf-a891-e44f2d1a0ecd?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">AmEx × F1 Las Vegas — Cardholder Experience</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STILLS -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">On-Site Content — Stills</p>
+      <h3 class="cs-section-title">Access. Experience. Delivered.</h3>
+      <p class="cs-section-body">From exclusive merch to Michelin-level hospitality to pit lane credentials — every activation captured and posted in the moment, making followers feel the FOMO in real time.</p>
+      <div class="cs-stills-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/amex-merch.jpeg" alt="AmEx F1 Exclusive Race Weekend Merch" loading="lazy">
+          <span class="cs-still-num">Exclusive Merch Drop</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/amex-hospitality.jpeg" alt="AmEx Race Weekend Hospitality Lounge" loading="lazy">
+          <span class="cs-still-num">Hospitality Lounge</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 9/16;">
+          <img src="https://portfolio-images1.b-cdn.net/amex-pitlane.png" alt="AmEx F1 Pit Lane Access" loading="lazy">
+          <span class="cs-still-num">Pit Lane Access</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATIVE CALLOUT -->
+    <div style="margin-bottom: 80px;">
+      <p class="cs-section-label">On-Site Approach</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        <div style="padding: 40px; background: var(--grey-900); border-left: 2px solid var(--accent-2);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 16px;">The Challenge</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"The story expires the minute the race ends."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">Live events don't wait. Every exclusive access moment, every merch drop, every behind-the-grid look has a shelf life measured in minutes. Miss the window and the content loses its power.</p>
+        </div>
+        <div style="padding: 40px; background: var(--grey-900); border-left: 1px solid var(--grey-700);">
+          <p style="font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 16px;">The Solution</p>
+          <p style="font-family: var(--font-display); font-size: clamp(20px, 2vw, 28px); color: var(--white); margin-bottom: 14px; line-height: 1.2; font-style: italic;">"One person. Full coverage. Zero lag."</p>
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 300; color: var(--grey-300); line-height: 1.8;">Embedded on-site for the full race weekend — shooting, editing, and publishing as a one-man content engine. The result: a real-time social story that drove 345M+ impressions and 68.1% sales growth against a 7% goal.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cs-body -->
+</div><!-- /amex-modal -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- STEEL SESSIONS CASE STUDY MODAL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cs-modal" id="steelsessions-modal" role="dialog" aria-modal="true" aria-label="Steel Sessions Case Study">
+
+  <button class="cs-close" onclick="closeSteelSessions()">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M1 1l10 10M11 1L1 11"/>
+    </svg>
+    Close
+  </button>
+
+  <!-- HERO -->
+  <div class="cs-hero" style="height: 70vh;">
+    <div class="cs-hero-bg" style="background-image: url('https://portfolio-images1.b-cdn.net/steel-22.png'); background-position: center top;"></div>
+    <div class="cs-hero-overlay" style="background: linear-gradient(170deg, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.92) 100%);"></div>
+    <div class="cs-hero-content">
+      <p class="cs-eyebrow" style="color: #c8a84b;">Freelance — Music / Events · NYC</p>
+      <h2 class="cs-title">Steel<br><em>Sessions.</em></h2>
+      <p class="cs-subtitle">On-demand creative content for Buda Da Future, Grandz Muzic & Mike Kuz — event flyers, promo video, and social assets for NYC's premier producer and engineer workshop.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="cs-body">
+
+    <!-- BRIEF STRIP -->
+    <div class="cs-brief">
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Client</div>
+        <div class="cs-brief-val">Steel Sessions — Buda, Grandz & Mike Kuz</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Type</div>
+        <div class="cs-brief-val">Music / Producer Workshop · NYC</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Role</div>
+        <div class="cs-brief-val">Creative Content · Flyers · Promo Video</div>
+      </div>
+      <div class="cs-brief-cell">
+        <div class="cs-brief-label">Platform</div>
+        <div class="cs-brief-val">Instagram · On-Demand</div>
+      </div>
+    </div>
+
+    <!-- THE BRIEF -->
+    <p class="cs-section-label">The Work</p>
+    <h3 class="cs-section-title">Built for the culture. Delivered on demand.</h3>
+    <p class="cs-section-body">Steel Sessions is one of the most respected producer development workshops in NYC — 90 minutes one-on-one with Buda & Grandz (producers for Dave East, Nas, Rick Ross) and Mike Kuz. The content had to match the energy of the room: bold, no-frills, Hip Hop. Event flyers, promo videos, and social assets — created on request and ready to post.</p>
+
+    <!-- DELIVERABLES -->
+    <p class="cs-section-label">Scope of Work</p>
+    <div class="cs-deliverables">
+      <div class="cs-deliverable" style="border-left: 2px solid #c8a84b;">
+        <div class="cs-del-num">01</div>
+        <div class="cs-del-type" style="color: #c8a84b;">Event Flyers</div>
+        <div class="cs-del-title">Graphic Design On-Demand</div>
+        <div class="cs-del-desc">Designed event flyers for multiple Steel Sessions events — each with its own visual identity, from chrome 3D type to jersey graphics to gold bull iconography.</div>
+      </div>
+      <div class="cs-deliverable" style="border-left: 2px solid #c8a84b;">
+        <div class="cs-del-num">02</div>
+        <div class="cs-del-type" style="color: #c8a84b;">Promo Video</div>
+        <div class="cs-del-title">Social-First Video Content</div>
+        <div class="cs-del-desc">Short-form promo video created to drive registrations and hype for upcoming sessions — optimized for Instagram feed and Stories.</div>
+      </div>
+      <div class="cs-deliverable" style="border-left: 2px solid #c8a84b;">
+        <div class="cs-del-num">03</div>
+        <div class="cs-del-type" style="color: #c8a84b;">Album Art</div>
+        <div class="cs-del-title">Buda Grandz Chi — Second Home</div>
+        <div class="cs-del-desc">Designed the artwork for Buda & Grandz's joint project <em>Second Home (Episode 2)</em> — illustration direction, layout, and final art delivery.</div>
+      </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <div class="cs-video-block">
+      <p class="cs-section-label">Promo Video</p>
+      <h3 class="cs-section-title">Register. Learn. Level up.</h3>
+      <p class="cs-section-body">Short-form promo content built to drive registrations — fast cuts, bold type, and zero fluff. The same energy as the workshop itself.</p>
+      <div class="cs-video-grid">
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/bd49c6a9-52ab-4035-812b-d2d5214e9673?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">Steel Sessions — Promo Vol. 1</div>
+        </div>
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/a6932092-b528-4c29-a1e6-b0666528621c?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">Steel Sessions — Promo Vol. 2</div>
+        </div>
+      </div>
+      <!-- Third video full width -->
+      <div style="margin-top: 2px; max-width: 400px;">
+        <div class="cs-video-wrap">
+          <div class="ratio-box">
+          <iframe
+            src="https://iframe.mediadelivery.net/embed/623611/9b0a9846-74e1-4a80-82c2-e9f392117ed9?autoplay=false&loop=false&muted=false&preload=true"
+            loading="lazy"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          </div>
+          <div class="cs-video-label">Steel Sessions — Promo Vol. 3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLYERS -->
+    <div class="cs-stills-block">
+      <p class="cs-section-label">Event Flyers + Album Art</p>
+      <h3 class="cs-section-title">Every session. Its own statement.</h3>
+      <p class="cs-section-body">From the chrome 3D treatment of Session XXIX to the jersey graphic of Session 23 to the gold bull of Session 22 — each event got its own visual identity, built around the moment and the vibe.</p>
+      <div class="cs-stills-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="cs-still" style="aspect-ratio: 1/1;">
+          <img src="https://portfolio-images1.b-cdn.net/steel-xxix.png" alt="Steel Sessions XXIX flyer" loading="lazy">
+          <span class="cs-still-num">Session XXIX</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 1/1;">
+          <img src="https://portfolio-images1.b-cdn.net/steel-23.png" alt="Steel Sessions 23 flyer" loading="lazy">
+          <span class="cs-still-num">Session 23 — Mixer</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 1/1;">
+          <img src="https://portfolio-images1.b-cdn.net/steel-22.png" alt="Steel Sessions 22 flyer" loading="lazy">
+          <span class="cs-still-num">Session 22</span>
+        </div>
+        <div class="cs-still" style="aspect-ratio: 1/1;">
+          <img src="https://portfolio-images1.b-cdn.net/steel-xvi.png" alt="Steel Sessions XVI flyer" loading="lazy">
+          <span class="cs-still-num">Session XVI</span>
+        </div>
+      </div>
+      <!-- Album art full width below -->
+      <div style="margin-top: 2px;">
+        <div class="cs-still" style="aspect-ratio: 1/1; max-width: 480px;">
+          <img src="https://portfolio-images1.b-cdn.net/steel-album.png" alt="Buda Grandz Chi Second Home Episode 2 album art" loading="lazy">
+          <span class="cs-still-num">Buda Grandz Chi — Second Home EP2</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cs-body -->
+</div><!-- /steelsessions-modal -->
+
+<!-- NAV -->
+<nav id="navbar">
+  <span class="nav-logo" style="visibility: hidden; pointer-events: none;">Charles Hailey</span>
+  <ul class="nav-links">
+    <li><a href="#brand-work">Work</a></li>
+    <li><a href="#personal-work">Personal</a></li>
+    <li><a href="#freelance">Freelance</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Creative Producer · Integrated Producer</p>
+    <h1 class="hero-name">Charles<br><em>Hailey.</em></h1>
+    <p class="hero-title">Creating culture-driven content,<br>campaigns, and experiences.</p>
+    <p class="hero-view-work">View Work Below</p>
+  </div>
+
+  <span class="hero-scroll-hint">Scroll</span>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- BRAND WORK -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="brand-work">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Selected Projects</p>
+      <h2 class="section-title">Brand Work</h2>
+    </div>
+    <span class="section-count">03 Projects</span>
+  </div>
+
+  <div class="project-grid brand-grid">
+
+    <!-- American Express — opens case study -->
+    <div class="card reveal" id="amex-card" onclick="openAmex()" style="cursor:pointer;">
+      <div class="card-inner">
+        <div class="card-img" style="background: url('https://portfolio-images1.b-cdn.net/amex-platinum.png') center/cover;"></div>
+        <div class="card-overlay" style="background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.1) 100%);"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info">
+          <p class="card-client" style="color: #a8d4f5; font-weight: 700; letter-spacing: 0.18em;">American Express</p>
+          <h3 class="card-title" style="text-shadow: 0 2px 12px rgba(0,0,0,0.8);">Business Class.<br>No Compromises.</h3>
+          <p class="card-desc">On-site capture, edit, and post — live event production at the F1 Las Vegas Grand Prix for AmEx cardholders.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pacifico — opens case study -->
+    <div class="card reveal" id="pacifico-card" onclick="openPacifico()" style="cursor:pointer;">
+      <div class="card-inner">
+        <div class="card-img" style="background: url('https://portfolio-images1.b-cdn.net/pacifico-bottle.png') center/cover;"></div>
+        <div class="card-overlay" style="background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%);"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info">
+          <p class="card-client" style="color: #c8f0d4; font-weight: 700; letter-spacing: 0.18em;">Pacifico × Snow League</p>
+          <h3 class="card-title" style="text-shadow: 0 2px 12px rgba(0,0,0,0.8);">Feel The<br>Elements.</h3>
+          <p class="card-desc">Official Beer Partner of the Snow League — social content, broadcast partnership, and adventure-first storytelling.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fanatics / Topps — opens case study -->
+    <div class="card reveal" id="fanatics-card" onclick="openFanatics()" style="cursor:pointer;">
+      <div class="card-inner">
+        <div class="card-img" style="background: url('https://portfolio-images1.b-cdn.net/fanatics-carousel.jpg') center/cover;"></div>
+        <div class="card-overlay"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info">
+          <p class="card-client">Fanatics / Topps</p>
+          <h3 class="card-title">The Card<br>Is Culture.</h3>
+          <p class="card-desc">Social-first content for NBA Collect, BUNT, and Star Wars Card Trader — tied to sports moments, product drops, and in-app events.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PERSONAL WORK -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="personal-work">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Independent Projects</p>
+      <h2 class="section-title">Personal Work</h2>
+    </div>
+    <span class="section-count">02 Projects</span>
+  </div>
+
+  <div class="project-grid personal-grid">
+
+    <!-- NJ Natives -->
+    <div class="card reveal">
+      <div class="card-inner">
+        <!-- SWAP: replace with NJ Natives asset -->
+        <div class="card-img" style="background: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80&auto=format&fit=crop') center 60%/cover;"></div>
+        <div class="card-overlay"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info">
+          <p class="card-client">Jersey Natives</p>
+          <h3 class="card-title">Straight from<br>the Exit.</h3>
+          <p class="card-desc">NJ-rooted apparel brand on Etsy & Shopify — creative direction, brand identity, and in-house production.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pepsi Concept -->
+    <div class="card reveal">
+      <div class="card-inner">
+        <!-- SWAP: replace with Pepsi concept asset -->
+        <div class="card-img" style="background: url('https://images.unsplash.com/photo-1581591524425-c7e0978865fc?w=1200&q=80&auto=format&fit=crop') center/cover;"></div>
+        <div class="card-overlay"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info">
+          <p class="card-client">Pepsi — Concept</p>
+          <h3 class="card-title">Ancient<br>Civilization.</h3>
+          <p class="card-desc">Cinematic AI-generated portfolio concept produced via Kling image-to-video workflow. Exploratory spec work.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FREELANCE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="freelance">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Editorial + Artist</p>
+      <h2 class="section-title">Freelance</h2>
+    </div>
+    <span class="section-count">02 Features</span>
+  </div>
+
+  <div class="project-grid" style="grid-template-columns: 1fr 1fr; gap: 2px;">
+
+    <!-- Dave East -->
+    <div class="card freelance-half reveal" onclick="openDaveEast()" style="cursor:pointer;">
+      <div class="card-inner" style="padding-bottom: 110%;">
+        <div class="card-img" style="background: url('https://portfolio-images1.b-cdn.net/daveeast-vertical.png') center top/cover;"></div>
+        <div class="card-overlay" style="background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.3) 60%, transparent 100%);"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info" style="padding: 28px;">
+          <span class="freelance-tag">
+            <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+            Music / Artist
+          </span>
+          <p class="card-client">Freelance — Dave East</p>
+          <h3 class="card-title" style="font-size: clamp(28px, 4vw, 52px);">Paranoia.<br>Visualized.</h3>
+          <p class="card-desc">Album rollout content — capture, cut, and campaign for Dave East's <em>Paranoia</em> drop.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steel Sessions -->
+    <div class="card freelance-half reveal" onclick="openSteelSessions()" style="cursor:pointer;">
+      <div class="card-inner" style="padding-bottom: 110%;">
+        <div class="card-img" style="background: url('https://portfolio-images1.b-cdn.net/steel-xxix.png') center/cover;"></div>
+        <div class="card-overlay" style="background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.35) 60%, rgba(10,10,10,0.05) 100%);"></div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+        <div class="card-info" style="padding: 28px;">
+          <span class="freelance-tag" style="background: #c8a84b; color: #000;">
+            <svg width="7" height="7" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+            Music / Events
+          </span>
+          <p class="card-client" style="color: #c8a84b; font-weight: 700; letter-spacing: 0.18em;">Freelance — Steel Sessions</p>
+          <h3 class="card-title" style="font-size: clamp(28px, 4vw, 52px); text-shadow: 0 2px 12px rgba(0,0,0,0.9);">Steel<br>Sessions.</h3>
+          <p class="card-desc">On-demand content for Buda Da Future, Grandz Muzic & Mike Kuz — event flyers, promo video, and social assets for NYC's premier producer workshop.</p>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- ABOUT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-header reveal" style="border-color: #ddd;">
+    <div>
+      <p class="section-label">Background</p>
+      <h2 class="section-title" style="color:var(--black);">About</h2>
+    </div>
+  </div>
+
+  <div class="about-layout" style="grid-template-columns: 1fr; max-width: 760px;">
+
+    <div class="about-text reveal">
+      <p class="about-intro">"I build the kind of content that actually moves people — because I've lived the culture it comes from."</p>
+      <p class="about-body">Charles Hailey is an Integrated Producer and social media strategist with 6+ years of agency experience at Day One Agency, Kettle, and Deutsch NY. He has brought campaigns to life for Nike, American Express, and Pacifico — leading production from concept to delivery across social, video, and live events.</p>
+      <p class="about-body">He captures, creates, edits, and manages content end-to-end — from on-set production and raw footage to final delivery across every platform. His work sits at the intersection of brand strategy and cultural authenticity. A lifelong collector of sneakers, trading cards, and comics — with deep roots in Hip Hop — he brings genuine insider perspective to every brief. Outside agencies, he runs Jersey Natives, an NJ-themed apparel brand built on the culture he grew up in.</p>
+
+      <div class="about-tags">
+        <span class="tag">Integrated Production</span>
+        <span class="tag">Social Strategy</span>
+        <span class="tag">AI Video</span>
+        <span class="tag">Brand Campaigns</span>
+        <span class="tag">Live Events</span>
+        <span class="tag">Hip Hop Culture</span>
+        <span class="tag">Sneakers + Cards</span>
+      </div>
+
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years Agency</div>
+        </div>
+        <div>
+          <div class="stat-num">345M+</div>
+          <div class="stat-label">Impressions</div>
+        </div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Brands Worked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CONTACT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-bg-text">Let's Work</div>
+  <div class="contact-content reveal">
+    <p class="contact-label">Get In Touch</p>
+    <h2 class="contact-headline">Let's make<br><em>something real.</em></h2>
+    <!-- SWAP: replace with actual email -->
+    <a href="mailto:charlesjhailey@gmail.com" class="contact-email">charlesjhailey@gmail.com</a>
+
+    <ul class="contact-socials">
+      <li><a href="https://www.linkedin.com/in/charlesjhailey/" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 Charles J. Hailey. All rights reserved.</span>
+  <a href="#hero" class="footer-back">Back to top ↑</a>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- JS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script>
+  /* ── Sticky nav ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Reveal on scroll ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in-view'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── Custom cursor ── */
+  const cursor = document.getElementById('cursor');
+  let cx = 0, cy = 0, tx = 0, ty = 0;
+
+  document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+
+  function animCursor() {
+    cx += (tx - cx) * 0.18;
+    cy += (ty - cy) * 0.18;
+    cursor.style.left = cx + 'px';
+    cursor.style.top  = cy + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  document.querySelectorAll('a, .card, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('expanded'));
+  });
+
+  /* ── Helper: stop all iframes inside a modal ── */
+  function stopModalVideos(modal) {
+    modal.querySelectorAll('iframe').forEach(iframe => {
+      const src = iframe.src;
+      iframe.src = '';
+      setTimeout(() => { iframe.src = src; }, 50);
+    });
+  }
+
+  /* ── Fanatics modal ── */
+  const fModal = document.getElementById('fanatics-modal');
+
+  function openFanatics() {
+    fModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    fModal.scrollTop = 0;
+  }
+
+  function closeFanatics() {
+    stopModalVideos(fModal);
+    fModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Pacifico modal ── */
+  const pModal = document.getElementById('pacifico-modal');
+
+  function openPacifico() {
+    pModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    pModal.scrollTop = 0;
+  }
+
+  function closePacifico() {
+    stopModalVideos(pModal);
+    pModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Dave East modal ── */
+  const deModal = document.getElementById('daveeast-modal');
+
+  function openDaveEast() {
+    deModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    deModal.scrollTop = 0;
+  }
+
+  function closeDaveEast() {
+    stopModalVideos(deModal);
+    deModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── AmEx modal ── */
+  const amexModal = document.getElementById('amex-modal');
+
+  function openAmex() {
+    amexModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    amexModal.scrollTop = 0;
+  }
+
+  function closeAmex() {
+    stopModalVideos(amexModal);
+    amexModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Steel Sessions modal ── */
+  const ssModal = document.getElementById('steelsessions-modal');
+
+  function openSteelSessions() {
+    ssModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    ssModal.scrollTop = 0;
+  }
+
+  function closeSteelSessions() {
+    stopModalVideos(ssModal);
+    ssModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on Escape — stops video on all modals
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeFanatics();
+      closePacifico();
+      closeDaveEast();
+      closeAmex();
+      closeSteelSessions();
+    }
+  });
+</script>
+</body>
+</html>
